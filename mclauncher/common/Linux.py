@@ -4,13 +4,13 @@ import platform
 WORKDIR = None
 
 def getDisplayName():
-    return "Mircosoft Windows"
+    return "Linux/Unix"
 
 def getMinecraftName():
-    return "windows"
+    return "linux"
 
 def getLibrarySeparator():
-    return ";"
+    return ":"
 
 def getArchitecture():
     return platform.architecture()[0]
@@ -18,10 +18,9 @@ def getArchitecture():
 def getWorkingDirectory():
     if WORKDIR != None:
         return WORKDIR
-    appdata = os.getenv('APPDATA')
-    if os.path.exists(appdata):
-        if os.path.exists(appdata + "/.minecraft"):
-            WORKDIR = appdata + "/.minecraft"
+    home = os.path.expanduser("~")
+    if os.path.exists(home):
+        if os.path.exists(home + "/.minecraft"):
+            WORKDIR = home + "/.minecraft"
     
     return WORKDIR
-
