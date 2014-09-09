@@ -1,8 +1,7 @@
-import json
-import urllib2
 import urllib
-import os
-import sys
+import atexit
+import subprocess
+import Platform
 
 class MCLauncher(object):
 
@@ -18,6 +17,17 @@ class MCLauncher(object):
     
     def getVersionJSON(self):
         self.versionJSON = self.version.getVersionJSON()
+        
+    def startGame(self, arguments):
+        proc = subprocess.Popen(arguments,
+                                 executable=self.javaEXE,
+                                 cwd=Platform.getWorkingDirectory(),
+                                 stdin=subprocess.PIPE,
+                                 stdout=subprocess.PIPE,
+                                 stderr=subprocess.STDOUT,
+                                 universal_newlines=True,)
+        atexit.register(proc.terminate())
+        return proc
         
         
         

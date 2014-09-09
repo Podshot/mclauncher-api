@@ -1,8 +1,17 @@
 import urllib2
 import json
 
+'''
+Minecraft Version container
+'''
 class Version(object):
-
+    
+    '''
+    Initalizes a new Minecraft Version
+    
+    param: vid: The Minecraft Version name
+    param: json: The <minecraft version>.json file parsed with python's built in json module
+    '''
     def __init__(self, vid, json):
         self.id = vid
         self.type = json["type"]
@@ -13,6 +22,9 @@ class Version(object):
         
     def getMinecraftArguments(self):
         return self.minecraftArguments
+    
+    def getMinimumLauncherVersion(self):
+        return self.minimumLauncherVersion
     
     def getMainClass(self):
         return self.mainClass
