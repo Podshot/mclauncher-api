@@ -3,9 +3,22 @@ import json
 
 class Version(object):
 
-    def __init__(self, id, type):
-        self.id = id
-        self.type = type
+    def __init__(self, vid, json):
+        self.id = vid
+        self.type = json["type"]
+        self.minimumLauncherVersion = json["minimumLauncherVersion"]
+        self.minecraftArguments = json["minecraftArguments"]
+        self.mainClass = json["mainClass"]
+        self.libraries = json["libraries"]
+        
+    def getMinecraftArguments(self):
+        return self.minecraftArguments
+    
+    def getMainClass(self):
+        return self.mainClass
+    
+    def getLibraries(self):
+        return self.libraries
         
     def getID(self):
         return self.id
