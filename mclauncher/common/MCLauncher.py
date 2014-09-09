@@ -17,6 +17,7 @@ class MCLauncher(object):
         return
     
     def getVersionJSON(self):
-        self.version.getVersionJSON()
+        self.versionJSON = self.version.getVersionJSON()
+        
         
         
