@@ -1,0 +1,22 @@
+About MCLauncher in Python
+
+MCLauncher is a python adaption of Tomsik68's mclauncher API written in Java. I have
+decided to adapt his API to python (not an easy job).
+
+Module Structure:
+mclauncher
+         |
+         |-common-+
+         |        |
+         |        Package containing OS related files and the MCLauncher class
+         |
+         |
+         |-version-+
+         |         |
+         |         Package containing version info and asset handling
+         |
+         |
+         |-doc-+
+         |     |
+         |     Package containing module documentation
+
