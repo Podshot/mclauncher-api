@@ -1,1 +1,1 @@
-raise Exception("This part of the package is for documenation purposes and contains no actual code")
+raise Exception("This part of the package is for documentation purposes and contains no actual code")
