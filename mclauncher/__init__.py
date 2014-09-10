@@ -1,2 +1,3 @@
-from mclauncher.common import __init__ as mccommon
-from mclauncher.version import __init__ as mcversion
+import common
+import version
+import login
