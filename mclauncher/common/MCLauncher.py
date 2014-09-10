@@ -2,6 +2,7 @@ import urllib
 import atexit
 import subprocess
 import Platform
+from mclauncher.version.assets import AssetHandler
 
 class MCLauncher(object):
 
@@ -17,6 +18,10 @@ class MCLauncher(object):
     
     def getVersionJSON(self):
         self.versionJSON = self.version.getVersionJSON()
+    
+    def install(self):
+        assets = self.version.getAssets()
+        AssetHandler.AssetHandler(assets)
         
     def startGame(self, arguments):
         proc = subprocess.Popen(arguments,

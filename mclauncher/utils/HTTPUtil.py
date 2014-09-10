@@ -1,11 +1,15 @@
 import urllib2
+import urllib
 import httplib
+import os
  
 class HTTPGet(object):
 
     def __init__(self, url):
-        return urllib2.urlopen(url).read()
+        self.response = urllib2.urlopen(url).read()
     
+    def getResponse(self):
+        return self.response
     
 class HTTPSPost(object):
     defaultHeader = {'User-Agent': 'mclauncher','Content-Type': "application/json"}
@@ -19,5 +23,12 @@ class HTTPSPost(object):
         
     def getResponse(self):
         return self.response
+    
+class DownloadFile(object):
+    
+    def __init__(self, url, file):
+        urllib.urlretrieve(url, file)
+        print os.path.getsize("C:\\Users\\Jonathan\\Python\\mclauncher-api\\mclauncher-api\\mclauncher\\version\\assets\\1.8.json")
+    
         
         
