@@ -1,6 +1,7 @@
 import json
 import requests
 import httplib
+from mclauncher.utils import HTTPUtil
 
 headers = {
     'User-Agent': 'mclauncher',
@@ -22,13 +23,29 @@ class YDLoginSessionID(object):
         print "Status: " + str(res.status)
         print "Reason: " + str(res.reason)
         print "Response: " + res.read()
+        
+        http = HTTPUtil.HTTPSPost("authserver.mojang.com", "/refresh", sessionJSON)
+        print http.getResponse().read()
+        
 
         
         
 class YDPasswordLogin(object):
     
-    def __init__(self):
-        return
+    def __init__(self, username, password, clientToken):
+        passwordLoginDict = {}
+        agentDict = {}
+        agentDict["name"] = "Minecraft"
+        agentDict["version"] = "1"
+        passwordLoginDict["agent"] = agentDict
+        passwordLoginDict["username"] = username
+        passwordLoginDict["password"] = password
+        passwordLoginDict["clientToken"] = clientToken
+        passwordLoginJSON = json.dumps(passwordLoginDict)
+        
+        http = HTTPUtil.HTTPSPost("authserver.mojang.com", "/authenticate", passwordLoginJSON)
+        print http.getResponse().read()
         
         
-YDLoginSessionID("aT", "cT")
+#YDLoginSessionID("aT", "cT")
+YDPasswordLogin("test", "test-password", "cT")
