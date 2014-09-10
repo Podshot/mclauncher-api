@@ -7,7 +7,7 @@ Minecraft Version container
 class Version(object):
     
     '''
-    Initalizes a new Minecraft Version
+    Initializes a new Minecraft Version
     
     param: vid: The Minecraft Version name
     param: json: The <minecraft version>.json file parsed with python's built in json module
@@ -19,6 +19,10 @@ class Version(object):
         self.minecraftArguments = json["minecraftArguments"]
         self.mainClass = json["mainClass"]
         self.libraries = json["libraries"]
+        if "assets" in json:
+            self.assets = json["assets"]
+        else:
+            self.assets = "DEFAULT_ASSETS"
         
     def getMinecraftArguments(self):
         return self.minecraftArguments
@@ -37,6 +41,9 @@ class Version(object):
     
     def getType(self):
         return self.type
+    
+    def getAssets(self):
+        return self.assets
     
     def getVersionJSON(self):
         site = urllib2.urlopen("http://s3.amazonaws.com/Minecraft.Download/versions/" + self.getID() + "/" + self.getID() + ".json").read()

@@ -1,27 +1,37 @@
-/forms-1.3.0.jar
-/forms-1.3.0-src.zip
-/miglayout15-swing.jar
-/miglayout-src.zip
-/minecraft.src.zip
-/META-INF
-/minecraft.src
-/toms-mclauncher.log
-/toms-mclauncher.log.1
-/toms-mclauncher.log.2
-/savetest
-/savetest-json
-/README.md
-/testmc/*
-/testmc
-/dest
-/dist
-/lib
-/experiments
-/build.xml
-/testlaunch_api.sh
-/testlaunch.sh
-/tools/servicefinder/*_src
-/tools/servicefinder/*_disasm
-/tools/servicefinder/*.jar
-/tools/servicefinder/versions.json
-/Official-MCLauncher
+*.py[cod]
+
+# C extensions
+*.so
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+
