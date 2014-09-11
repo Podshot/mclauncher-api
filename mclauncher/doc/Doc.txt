@@ -26,4 +26,8 @@ mclauncher
          |-doc-+
          |     |
          |     Package containing module documentation
+         |
+         |-api-+
+         |     |
+         |     Package containing modules class that can replace parts on my API
 

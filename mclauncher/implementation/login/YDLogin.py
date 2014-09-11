@@ -54,7 +54,7 @@ class YDPasswordLogin(YDLogin_API.YDPasswordLogin):
         
         http = HTTPUtil.HTTPSPost("authserver.mojang.com", "/authenticate", passwordLoginJSON)
         jsonResponse = json.loads(http.getResponse().read())
-        if jsonResponse["error"] == "" and jsonResponse["errorMessage"] == "":
+        if "error" not in jsonResponse or "errorMessage" not in jsonResponse:
             self.session = Session.Session(jsonResponse)
         else:
             raise Exception(jsonResponse["error"] + " - " + jsonResponse["errorMessage"])
