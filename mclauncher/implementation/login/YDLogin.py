@@ -2,6 +2,7 @@ import json
 import httplib
 from mclauncher.implementation.utils import HTTPUtil
 from mclauncher.api.login import YDLogin_API
+from mclauncher.implementation.login import Session
 
 headers = {
     'User-Agent': 'mclauncher',
@@ -25,7 +26,12 @@ class YDLoginSessionID(YDLogin_API.YDLoginSessionID):
         print "Response: " + res.read()
         
         http = HTTPUtil.HTTPSPost("authserver.mojang.com", "/refresh", sessionJSON)
-        print http.getResponse().read()
+        jsonResponse = json.loads(http.getResponse().read())
+        if jsonResponse["error"] == "" and jsonResponse["errorMessage"] == "":
+            self.session = Session.Session(jsonResponse)
+        else:
+            raise Exception(jsonResponse["error"] + " - " + jsonResponse["errorMessage"])
+        
         
 
         
