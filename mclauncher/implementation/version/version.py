@@ -1,10 +1,11 @@
 import urllib2
 import json
+from mclauncher.api.version import version
 
 '''
 Minecraft Version container
 '''
-class Version(object):
+class Version(version.Version):
     
     '''
     Initializes a new Minecraft Version

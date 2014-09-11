@@ -5,22 +5,23 @@ decided to adapt his API to python (not an easy job).
 
 Module Structure:
 mclauncher
-         |
-         |-common-+
-         |        |
-         |        Package containing OS related files and the MCLauncher class
-         |
-         |-version-+
-         |         |
-         |         Package containing version info and asset handling
-         |
-         |-login-+
-         |       |
-         |       Package containing login info
-         |
-         |-utils-+
-         |       |
-         |       Package containing loose Utils that many be used by more that one part of the module
+         |-implementation-+-Package containing the original launcher code
+         |                |
+         |                |-common-+
+         |                |        |
+         |                |        Package containing OS related files and the MCLauncher class
+         |                |
+         |                |-version-+
+         |                |         |
+         |                |         Package containing version info and asset handling
+         |                |
+         |                |-login-+
+         |                |       |
+         |                |       Package containing login info
+         |                |
+         |                |-utils-+
+         |                |       |
+         |                |       Package containing loose Utils that many be used by more that one part of the module
          |
          |-doc-+
          |     |
