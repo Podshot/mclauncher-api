@@ -1,7 +1,7 @@
 import json
 import requests
 import httplib
-from mclauncher.utils import HTTPUtil
+from mclauncher.implementation.utils import HTTPUtil
 
 headers = {
     'User-Agent': 'mclauncher',
@@ -48,4 +48,4 @@ class YDPasswordLogin(object):
         
         
 #YDLoginSessionID("aT", "cT")
-YDPasswordLogin("test", "test-password", "cT")
+#YDPasswordLogin("test", "test-password", "cT")

@@ -1,7 +1,7 @@
 import urllib2
 import urllib
 import json
-from mclauncher.version.version import Version
+from mclauncher.implementation.version.version import Version
 
 
 class MCDownloadVersionList(object):
@@ -31,4 +31,4 @@ Prevents a double launch bug in PyDev, not to be used in API
 def getVersionList(): 
     return MCDownloadVersionList().getVersions()
     
-getVersionList()
+#getVersionList()

@@ -2,7 +2,7 @@ import urllib
 import atexit
 import subprocess
 import Platform
-from mclauncher.version.assets import AssetHandler
+from mclauncher.implementation.version.assets import AssetHandler
 
 class MCLauncher(object):
 
