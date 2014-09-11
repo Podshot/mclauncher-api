@@ -1,14 +1,33 @@
 from sys import platform as _platform
-import os
 import Windows
 import Macintosh
+from mclauncher.api.common import Platform_API
 
-def getCurrentPlatform():
-    if _platform == "win32":
-        return Windows.getDisplayName()
-    if _platform == "darwin":
-        return Macintosh.getDisplayName()
-    return None
+class Strict_Platform(Platform_API.Platform):
+    
+    def __init__(self):
+        if _platform == "win32":
+            self.os = Windows
+        if _platform == "darwin":
+            self.os = Macintosh
 
-def getWorkingDirectory():
-    return os.getcwd()
+    def getWorkingDirectory(self):
+        return self.os.getWorkingDirectory()
+    
+class Flexible_Platform(Platform_API.Platform):
+    
+    __shared_state = {}
+    
+    def __init__(self):
+        if _platform == "win32":
+            self.os = Windows
+        if _platform == "darwin":
+            self.os = Macintosh
+        self.workingDirectory = self.os.getWorkingDirectory()
+    
+    def setWorkingDirecotry(self, wDir):
+        self.workingDirectory = wDir
+        
+    def getWorkingDirectory(self):
+        return self.workingDirectory
+        

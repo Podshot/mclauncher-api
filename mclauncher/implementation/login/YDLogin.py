@@ -27,7 +27,7 @@ class YDLoginSessionID(YDLogin_API.YDLoginSessionID):
         
         http = HTTPUtil.HTTPSPost("authserver.mojang.com", "/refresh", sessionJSON)
         jsonResponse = json.loads(http.getResponse().read())
-        if jsonResponse["error"] == "" and jsonResponse["errorMessage"] == "":
+        if "error" not in jsonResponse or "errorMessage" not in jsonResponse:
             self.session = Session.Session(jsonResponse)
         else:
             raise Exception(jsonResponse["error"] + " - " + jsonResponse["errorMessage"])
