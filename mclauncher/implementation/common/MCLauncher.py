@@ -26,7 +26,7 @@ class MCLauncher(object):
     def startGame(self, arguments):
         proc = subprocess.Popen(arguments,
                                  executable=self.javaEXE,
-                                 cwd=Platform.getWorkingDirectory(),
+                                 cwd=Platform.Platform.getWorkingDirectory(),
                                  stdin=subprocess.PIPE,
                                  stdout=subprocess.PIPE,
                                  stderr=subprocess.STDOUT,
