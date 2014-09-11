@@ -1,7 +1,7 @@
 import urllib2
 import urllib
 import json
-from mclauncher.implementation.version.version import Version
+from mclauncher.implementation.version.Version import Version
 
 
 class MCDownloadVersionList(object):

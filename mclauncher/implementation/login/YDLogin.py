@@ -32,6 +32,9 @@ class YDLoginSessionID(YDLogin_API.YDLoginSessionID):
         else:
             raise Exception(jsonResponse["error"] + " - " + jsonResponse["errorMessage"])
         
+    def getSession(self):
+        return self.session
+        
         
 
         
@@ -50,7 +53,27 @@ class YDPasswordLogin(YDLogin_API.YDPasswordLogin):
         passwordLoginJSON = json.dumps(passwordLoginDict)
         
         http = HTTPUtil.HTTPSPost("authserver.mojang.com", "/authenticate", passwordLoginJSON)
-        print http.getResponse().read()
+        jsonResponse = json.loads(http.getResponse().read())
+        if jsonResponse["error"] == "" and jsonResponse["errorMessage"] == "":
+            self.session = Session.Session(jsonResponse)
+        else:
+            raise Exception(jsonResponse["error"] + " - " + jsonResponse["errorMessage"])
+        
+    def getSession(self):
+        return self.session
+    
+class YDLogout(YDLogin_API.YDLogout):
+    
+    def __init__(self, session):
+        logoutRequest = {}
+        logoutRequest["accessToken"] = session.getAccessToken()
+        logoutRequest["clientToken"] = session.getClientToken()
+        
+        logoutJSON = json.dumps(logoutRequest)
+        http = HTTPUtil.HTTPSPost("authserver.mojang.com", "/invalidate", logoutJSON)
+        jsonResponse = json.loads(http.getResponse().read())
+        if jsonResponse["error"] != "" and jsonResponse["errorMessage"] != "":
+            raise Exception(jsonResponse["error"] + " - " + jsonResponse["errorMessage"])
         
         
 #YDLoginSessionID("aT", "cT")
