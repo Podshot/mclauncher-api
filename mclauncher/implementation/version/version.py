@@ -1,17 +1,17 @@
 import urllib2
 import json
-from mclauncher.api.version import version
+from mclauncher.api.version import version_API
 
 '''
 Minecraft Version container
 '''
-class Version(version.Version):
+class Version(version_API.Version):
     
     '''
     Initializes a new Minecraft Version
     
     param: vid: The Minecraft Version name
-    param: json: The <minecraft version>.json file parsed with python's built in json module
+    param: json: The <minecraft version_API>.json file parsed with python's built in json module
     '''
     def __init__(self, vid, json):
         self.id = vid

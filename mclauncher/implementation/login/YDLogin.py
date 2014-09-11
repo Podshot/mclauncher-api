@@ -1,13 +1,13 @@
 import json
-import requests
 import httplib
 from mclauncher.implementation.utils import HTTPUtil
+from mclauncher.api.login import YDLogin_API
 
 headers = {
     'User-Agent': 'mclauncher',
     'Content-Type': "application/json"
     }
-class YDLoginSessionID(object):
+class YDLoginSessionID(YDLogin_API.YDLoginSessionID):
     
     def __init__(self, accessToken, clientToken):
         sessionDict = {}
@@ -30,7 +30,7 @@ class YDLoginSessionID(object):
 
         
         
-class YDPasswordLogin(object):
+class YDPasswordLogin(YDLogin_API.YDPasswordLogin):
     
     def __init__(self, username, password, clientToken):
         passwordLoginDict = {}
