@@ -1,7 +1,8 @@
 import os
 import platform
+from mclauncher.api.common import OS_API
 
-class Windows:
+class Windows(OS_API.OS):
     
     def __init__(self):
         self.WORKDIR = None
@@ -11,9 +12,6 @@ class Windows:
 
     def getMinecraftName(self):
         return "windows"
-
-    def getLibrarySeparator(self):
-        return ";"
 
     def getArchitecture(self):
         return platform.architecture()[0]
