@@ -2,9 +2,11 @@ from sys import platform as _platform
 import os
 import Windows
 import Macintosh
-from mclauncher.api.common import Platform_API
+#from mclauncher.api.common import Platform_API
+from mclauncher.implementation.utils.Singleton import Singleton
 
-class Platform(Platform_API.Platform):
+@Singleton
+class Platform:
     
     def __init__(self):
         if _platform == "win32":
