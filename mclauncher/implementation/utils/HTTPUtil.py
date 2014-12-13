@@ -24,11 +24,23 @@ class HTTPSPost(object):
     def getResponse(self):
         return self.response
     
+def downloadFile(url, f):
+    folder_path = f.split(os.path.sep)[:-1]
+    make_path = ""
+    for path_step in folder_path:
+        make_path += path_step+os.path.sep
+    try:
+        os.makedirs(make_path)
+    except OSError:
+        pass
+    urllib.urlretrieve(url, f)
+    
+    
 class DownloadFile(object):
     
-    def __init__(self, url, file):
-        urllib.urlretrieve(url, file)
-        print os.path.getsize("C:\\Users\\Jonathan\\Python\\mclauncher-api\\mclauncher-api\\mclauncher\\version\\assets\\1.8.json")
+    def __init__(self, url, wfile):
+        urllib.urlretrieve(url, "obj.file")
+        #print os.path.getsize("C:\\Users\\Jonathan\\Python\\mclauncher-api\\mclauncher-api\\mclauncher\\version\\assets\\1.8.json")
     
         
         
